@@ -1,0 +1,10 @@
+import javax.swing.*;
+
+JFrame window = new JFrame("Sergej's Window");
+JPanel panel = new JPanel();
+JButton button =  new JButton("Click me!");
+panel.add(button);
+window.add(panel);
+window.setSize(400,200);
+button.addActionListener(e -> System.out.println("Ouch, You clicked me!"));
+window.setVisible(true);
