@@ -24,10 +24,14 @@ public class HiLo {
 					System.out.println("Congrats, You guessed right: " + guess);
 				}
 			} // End of while
-			System.out.println("Would you like to play again ? ");
+			System.out.println("Would you like to play again (y/n)? ");
 			playAgain = scan.next();
-		} while ( playAgain.equalsIgnoreCase("y")); // End of Do 
+			
+		} while ( playAgain.equalsIgnoreCase("y")); // End of Do While
 		
+		System.out.println("Thanks for playing.");
+		scan.close();
+
 	}
 
 }
