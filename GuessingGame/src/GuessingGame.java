@@ -21,23 +21,32 @@ public class GuessingGame extends JFrame {
 		
 		String guessText = txtGuess.getText();
 		String message = "";
-		int guess = Integer.parseInt(guessText);
 		
-		if (guess < theNumber) {
-			message = guess + " is too low.Try again.";
-		} else if (guess < theNumber) {
-			message = guess + " is too high.Try again.";
-		} else {
-			message = guess + " is correct. You win";
+		try {
+			int guess = Integer.parseInt(guessText);
+			
+			if (guess < theNumber) {
+				message = guess + " is too low.Try again.";
+			} else if (guess < theNumber) {
+				message = guess + " is too high.Try again.";
+			} else {
+				message = guess + " is correct. You win! Let's play again !";
+				newGame();
+			}
+		} catch (Exception e) {
+			message = "Enter a whole number between 1 and 100.";
+		} finally {
+			lblOutput.setText(message);
+			txtGuess.requestFocus();
+			txtGuess.selectAll();
 		}
-
-		lblOutput.setText(message);
 		
 	}
 	
 	public void newGame() {
 	
 		theNumber = (int)(Math.random() * 100 + 1);
+		
 	}
 	
 	public GuessingGame() {
@@ -58,6 +67,11 @@ public class GuessingGame extends JFrame {
 		getContentPane().add(lblGuessNumber);
 		
 		txtGuess = new JTextField();
+		txtGuess.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				checkGuess();
+			}
+		});
 		txtGuess.setBounds(12, 94, 139, 30);
 		getContentPane().add(txtGuess);
 		txtGuess.setColumns(10);
