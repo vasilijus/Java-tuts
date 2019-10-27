@@ -16,12 +16,13 @@ public class GuessingGame extends JFrame {
 	private JTextField txtGuess;
 	private JLabel lblOutput;
 	private int theNumber;
+	private int numberOfTimes;
 	
 	public void checkGuess() {
 		
 		String guessText = txtGuess.getText();
 		String message = "";
-		
+		numberOfTimes = numberOfTimes + 1;
 		try {
 			int guess = Integer.parseInt(guessText);
 			
@@ -30,7 +31,7 @@ public class GuessingGame extends JFrame {
 			} else if (guess < theNumber) {
 				message = guess + " is too high.Try again.";
 			} else {
-				message = guess + " is correct. You win! Let's play again !";
+				message = guess + " is correct. You win! In only " + numberOfTimes + " turns ... Let's play again !";
 				newGame();
 			}
 		} catch (Exception e) {
